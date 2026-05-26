@@ -1,7 +1,9 @@
 package dungeon.service;
 
 import dungeon.model.GameCharacter;
+import dungeon.model.Guild;
 import dungeon.model.Monster;
+import dungeon.model.Player;
 
 public class Battle {
     private GameCharacter character;
@@ -28,6 +30,24 @@ public class Battle {
         } else {
             System.out.println("몬스터가 아직 살아있습니다.");
         }
+    }
+
+    public void addItem(Player player, GameCharacter character, String itemName, String itemType, int itemValue) {
+        if (!player.checkPlayer()) {
+            System.out.println("플레이어 체크 실패");
+            return;
+        }
+
+        character.addItem(itemName, itemType, itemValue);
+    }
+
+    public void joinGuild(Player player, GameCharacter character, Guild guild) {
+        if (!player.checkPlayer()) {
+            System.out.println("플레이어 체크 실패");
+            return;
+        }
+
+        character.joinGuild(guild);
     }
 
     public String getDamageGrade(int damage) {
