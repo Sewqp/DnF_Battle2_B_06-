@@ -112,7 +112,7 @@ public class Main {
                 }
 
                 int itemValue = sc.nextInt();
-                character.addItem(itemName, itemType, itemValue);
+                battle.addItem(player, character, itemName, itemType, itemValue);
 
             } else if (menu == 3) {
                 character.showInventory();
@@ -123,7 +123,7 @@ public class Main {
                     continue;
                 }
 
-                character.joinGuild(guild);
+                battle.joinGuild(player, character, guild);
 
             } else if (menu == 5) {
                 System.out.println("전투를 종료합니다.");
