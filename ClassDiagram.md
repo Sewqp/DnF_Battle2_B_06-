@@ -18,9 +18,10 @@ classDiagram
         -String 직업
         -int 레벨
         -int hp
-        -int 공격력
+        -double 공격력
         -인벤토리 인벤토리
         +스킬발동() double
+        +get인벤토리() 인벤토리
     }
 
     class 전사 {
@@ -32,7 +33,7 @@ classDiagram
     }
 
     class 인벤토리 {
-        -List~아이템~ 아이템리스트
+        -아이템[] 아이템리스트
         -int 최대용량
         +아이템추가() boolean
     }
@@ -46,7 +47,7 @@ classDiagram
 
     class 길드 {
         -String 길드명
-        -List~캐릭터~ 캐릭터리스트
+        -캐릭터[] 캐릭터리스트
         -int 최대인원
         +캐릭터가입() boolean
     }
@@ -54,11 +55,10 @@ classDiagram
     전사 --|> 캐릭터
     마법사 --|> 캐릭터
 
-    전투 ..> 플레이어 : uses (Dependency)
-    전투 ..> 캐릭터 : uses (Dependency)
+    전투 ..> 플레이어 : uses
+    전투 ..> 캐릭터 : uses
 
-    캐릭터 "1" *-- "1" 인벤토리 : contains (Composition)
-    인벤토리 "1" *-- "0..10" 아이템 : contains (Composition)
-
-    길드 "1" o-- "0..5" 캐릭터 : has (Aggregation)
+    캐릭터 "1" *-- "1" 인벤토리 : Composition
+    인벤토리 "1" *-- "0..10" 아이템 : Composition
+    길드 "1" o-- "0..5" 캐릭터 : Aggregation
 ```
